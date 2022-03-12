@@ -56,9 +56,9 @@ const EventDetail = () => {
     }
     
   return (
-    <>
+    <>{cmsData && <>
         <section  className="landing-event" 
-        style={ {backgroundImage: `url(${cmsData && cmsData.eventCoverPhoto.url})`,
+        style={ {backgroundImage: `url(${cmsData.eventCoverPhoto.url})`,
         backgroundRepeat: 'no-repeat',  backgroundPosition: 'center', backgroundSize: 'contain'
     }}
          >
@@ -73,29 +73,29 @@ const EventDetail = () => {
         <section  className="event-details">
         <div  className="event-info">
             <h1  className="event-name">
-                {cmsData && cmsData.eventTitle}
+                {cmsData.eventTitle}
                 </h1>
              <br />   <br />
             <h2  className="event-type">About</h2>
             <p  className="event-para">
-                {cmsData && cmsData.eventDescription}
+                {cmsData.eventDescription}
             </p>
         </div>
 
         <div  className="event-topic">
-            {cmsData && cmsData.topicsClearedTitle &&<>
+            {cmsData.topicsClearedTitle &&<>
             <h1  className="topic-name">
-                {cmsData && cmsData.topicsClearedTitle} <br />  <br /> 
+                {cmsData.topicsClearedTitle} <br />  <br /> 
             </h1>
              
             <img 
             style={{ width: '64%',height: '500px', marginLeft: 'auto', display: 'block', marginRight: 'auto'}} 
-            src={cmsData && cmsData.topicsClearedImage.url} alt="" />
-             <MDEditor.Markdown className='topic-para' source={cmsData && cmsData.topicsClearedDescription} />
+            src={cmsData.topicsClearedImage.url} alt="" />
+             <MDEditor.Markdown className='topic-para' source={cmsData.topicsClearedDescription} />
             </>
             }
 
-                {cmsData  && cmsData.youtubeLink && <><h1 className="topic-name">Watch Now</h1> <br /> <iframe width="100%" height="450px" src={ cmsData&& cmsData.youtubeLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></>}
+                {cmsData.youtubeLink && <><h1 className="topic-name">Watch Now</h1> <br /> <iframe width="100%" height="450px" src={cmsData.youtubeLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></>}
         </div>
 
 
@@ -106,7 +106,7 @@ const EventDetail = () => {
                         Last Date
                     </h1>
                     <h2  className="event-data">
-                        {cmsData && cmsData.eventDateTime.substr(8,2) + cmsData.eventDateTime.substr(4,3) + "-" +cmsData.eventDateTime.substr(0,4)}
+                        {cmsData.eventDateTime.substr(8,2) + cmsData.eventDateTime.substr(4,3) + "-" +cmsData.eventDateTime.substr(0,4)}
                     </h2>
                 </div>
                 <div  className="time">
@@ -114,7 +114,7 @@ const EventDetail = () => {
                         Time
                     </h1>
                     <h2  className="event-data">
-                        {cmsData && cmsData.eventTime}
+                        {cmsData.eventTime}
                     </h2>
                 </div>
             </div>
@@ -135,6 +135,8 @@ const EventDetail = () => {
             </div>
         </div>
     </section>
+    </>
+    }
     </>
   )
   
